@@ -1,0 +1,16 @@
+"0","library(knitr)"
+"0",""
+"0","half <- nrow(variable_info) %/% 2"
+"0","part1 <- variable_info[1:half,]"
+"0","part2 <- variable_info[(half+1):nrow(variable_info),]"
+"0",""
+"0",""
+"0","col_spec <- "">{\\raggedright\\arraybackslash}p{5cm}"""
+"0",""
+"0","cat(""\\begin{minipage}{0.45\\textwidth}\n"")"
+"1","\begin{minipage}{0.45\textwidth}
+"
+"0","kable(part1, format = ""latex"", booktabs = TRUE, col.names = c(""Class"", ""Type""), colspec = col_spec)"
+"2","Error in kable_latex(x = c(""id"", ""date"", ""local_date"", ""score"", ""announce_date"",  : 
+  unused argument (colspec = "">{\\raggedright\\arraybackslash}p{5cm}"")
+"

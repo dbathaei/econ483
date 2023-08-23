@@ -1,0 +1,2 @@
+"0","kable(head(summary(data[,c(4,8,12,22,25)])), ""simple"", align = ""c"","
+"0","      caption = ""Summary statistic for SeatGeek generated scores."")"

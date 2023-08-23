@@ -1,0 +1,200 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Will Your Event Sell Out? Answering a Prediction Problem Using Machine Learning Algorithms},
+  pdfauthor={Daniel Bathaei; Amanda Muirhead},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Will Your Event Sell Out? Answering a Prediction Problem Using
+Machine Learning Algorithms}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{ECON 483: Economic Applications of Machine Learning}
+\author{Daniel Bathaei \and Amanda Muirhead}
+\date{August 15, 2023}
+
+\begin{document}
+\maketitle
+
+~~While by itself it is a piece of worthless paper, a ticket grants
+individuals access to an event that is otherwise closed to the public.
+If an event is well-liked, many people will buy tickets for it. If a
+performer, sports team, or exhibition achieves fame and popularity, more
+people might want to attend their events than are slots available. Once
+every ticket for an event has been purchased, that event is sold out. To
+performers, selling out is a sign of popularity. To producers, it is a
+sign of a missed opportunity. They could have charged more for their
+tickets, booked a bigger venue, or offered VIP packages. The ability to
+accurately anticipate whether an event will hit full capacity can have
+significant implications on a business' demand forecasting, market
+analysis, and revenue optimization, not to mention the subsequent
+effects on consumer spending and labour demand. Consequently, producers
+are asking whether a set of variables such as price and location can
+predict if their event will sell out. To this end, we use machine
+learning models to predict whether a show will sell out.
+
+~~The onset of machine learning in economics, with its capacity to
+discern patterns from intricate data, has become an indispensable tool
+in tackling complex prediction problems. Though it has several varying
+definitions, the study of machine learning boils down to computer
+programs' abilities to learn and adapt to new data without the
+interference of humans (\citet{babenko2021}). To predict the likelihood
+of an event selling out of tickets, we will employ several machine
+learning techniques, namely Classification Trees, Logistic Regression,
+Random Forests, Support Vector Machines, and Neural Networks.
+
+\hypertarget{background-and-current-literature}{%
+\section{Background and Current
+Literature}\label{background-and-current-literature}}
+
+~~Event tickets have been in the news a lot lately, namely for the
+escalating rates at which they are being priced. Event-goers around the
+world are increasingly lamenting over the rising costs of event tickets,
+as reports come out of potential price gouging and fees as high as 78\%
+of the original listed price (\citet{whyever2022}). While in 2018 it was
+reported that ticket sales had doubled since the 1990's
+(\citet{gigtick2018}), the percentage increase is now estimated to be
+near triple their pre-Y2K levels (\citet{lastweektonight2022}), proving
+that forecasting the demand for events is already one of many lucrative
+strategies being employed by artists and ticket-distributing giants such
+as Ticketmaster. Currently, event tickets sales are a \$78bn USD
+industry, expected to show a growth of 9.7\% by 2024 (\citet{eventti}).
+
+~~To contextualize our research, we studied existing literature
+surrounding event sell-out and other related quantity demanded
+predictions. Previous studies have illuminated various factors that
+contribute to event success, encompassing variables such as ticket
+pricing, marketing strategies, historical attendance data, and
+socioeconomic indicators (\citet{krueger2005}).
+
+\hypertarget{limitations}{%
+\subsection{Limitations}\label{limitations}}
+
+~~While writing this paper, we observed that companies work very hard to
+conceal any information related to sales volume and quantity of tickets
+demanded. StubHub has stopped providing businesses and researchers with
+access to its application programming interface (API) and only provides
+API services for producers for their own posted tickets\footnote{\url{https://developer.stubhub.com/api-reference/sales\#tag/Sales}}
+Ticketmaster has recently removed any indicator of sales volume on their
+API database. Companies like Pollstar\footnote{\url{https://www.pollstar.com/subscribe})}
+charge considerable fees before providing any information on ticket
+sales. This further solidifies the current importance and relevance of
+ticket sale information.
+
+\hypertarget{methodology}{%
+\section{\texorpdfstring{\textbf{Methodology}}{Methodology}}\label{methodology}}
+
+~~We use publicly available resources\footnote{Ethical obligations
+  dictate that we only use publicly available data, even if we use
+  scraping methods.} to prepare the data for our models. Pursuant to our
+objective, we collected data from SeatGeek using the website's
+application programming interface (API). Similar to other websites,
+SeatGeek has reduced their available sales volume data. However,
+SeatGeek still provides some insight on sales volume. Although the
+company has announced their plan to move away from disclosing any sales
+volume information through their API, this plan is yet to be
+implemented.
+
+\hypertarget{seatgeek}{%
+\subsection{SeatGeek}\label{seatgeek}}
+
+~~SeatGeek currently provides information regarding the volume of
+tickets sold by an event, performer, and/or venue. This information is
+shared through the `score' variable. The `score' variable is a
+scaled\footnote{\(0 \le score \le 1\)} measure of an event, performer,
+or venue's ticket sale volume relative to their type. This means that if
+an event sells more tickets than any other event similar to its type,
+that event will receive a score of 1. If an event makes no sales, that
+event will have a score of 0. For each observation we can gather an
+`event score', `venue score', and a performer score for each performer
+in that event. This information is highly valuable since it is derived
+from the quantity of units sold. Conveniently, SeatGeek analyzes the
+social media following of each event's performers, and provides a
+`popularity' value based on how popular an events performers are. This
+value is also scaled between 0 and 1. Consequently, the variables we
+gather from SeatGeek are shown on Table 1:
+
+  \bibliography{references.bib}
+
+\end{document}

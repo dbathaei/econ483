@@ -1,0 +1,5 @@
+"0","TREEconft <- confusionMatrix(TREErest, test_data$sold_out)
+"
+"2","Error in confusionMatrix.matrix(TREErest, test_data$sold_out) : 
+  matrix must have equal dimensions
+"

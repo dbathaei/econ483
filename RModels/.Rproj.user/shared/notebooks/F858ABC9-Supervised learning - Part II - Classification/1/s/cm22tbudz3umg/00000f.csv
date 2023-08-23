@@ -1,0 +1,7 @@
+"0","# Random forest"
+"0","rf_est <- randomForest(heart_disease ~ Age + sex + asymptomatic "
+"0","                  + typical_angina + atypical_angina + blood_sugar "
+"0","                  + exercise_induced_angina + MaximumHR + BP + Cholesterol, "
+"0","                  data = train_heart)"
+"2","Error in eval(m$data, parent.frame()) : object 'train_heart' not found
+"

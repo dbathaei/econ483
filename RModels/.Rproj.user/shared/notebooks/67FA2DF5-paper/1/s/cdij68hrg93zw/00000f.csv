@@ -1,0 +1,6 @@
+"0","LOGmodels <- data.frame("
+"0","  Model = c(""All Variables"", ""Adjusted R2"", ""BIC"", ""Cp""),"
+"0","  MCC = c(LOGmcc, LOGmccA, LOGmccB, LOGmccC)"
+"0",")"
+"0",""
+"0","kable(LOGmodels, caption = ""MCC for Logistic Models Based on Different Criteria"", ""latex"")"
